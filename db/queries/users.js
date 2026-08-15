@@ -1,30 +1,30 @@
 import db from "#db/client";
 import bcrypt from "bcrypt";
 
-export async function createUser(username, password) {
+export async function createUser(email, password, firstName, lastName, role) {
   const sql = `
   INSERT INTO users
-    (username, password)
+    (email, password, first_name, last_name, role)
   VALUES
-    ($1, $2)
+    ($1, $2, $3, $4, $5)
   RETURNING *
   `;
   const hashedPassword = await bcrypt.hash(password, 10);
   const {
     rows: [user],
-  } = await db.query(sql, [username, hashedPassword]);
+  } = await db.query(sql, [email, hashedPassword, firstName, lastName, role]);
   return user;
 }
 
-export async function getUserByUsernameAndPassword(username, password) {
+export async function getUserByUsernameAndPassword(email, password) {
   const sql = `
   SELECT *
   FROM users
-  WHERE username = $1
+  WHERE email = $1
   `;
   const {
     rows: [user],
-  } = await db.query(sql, [username]);
+  } = await db.query(sql, [email]);
   if (!user) return null;
 
   const isValid = await bcrypt.compare(password, user.password);
