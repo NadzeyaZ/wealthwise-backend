@@ -15,6 +15,7 @@ async function seed() {
     const lastName = faker.person.lastName();
     const email = faker.internet.email(firstName, lastName);
     const password = faker.internet.password();
+    console.log(`Advisor email and password: ${email} ${password}`);
     await createUser(email, password, firstName, lastName, "advisor");
   }
 
@@ -23,6 +24,7 @@ async function seed() {
     const lastName = faker.person.lastName();
     const email = faker.internet.email(firstName, lastName);
     const password = faker.internet.password();
+    console.log(`Client email and password: ${email} ${password}`);
     await createUser(email, password, firstName, lastName, "client");
     await createAdvisorsClients(
       1 + Math.floor(Math.random() * 5),
