@@ -1,0 +1,163 @@
+id,client_id,name,asset_class,quantity,unit_price
+1,6,Procter & Gamble Co.,equity,36,148.57
+2,6,Microsoft Corp.,equity,87,438.88
+3,6,iShares Core US Aggregate Bond ETF,bond,14,95.54
+4,6,Alphabet Inc. Class A,equity,65,172.14
+5,6,Series I Savings Bond,bond,14,100.00
+6,6,Johnson & Johnson,equity,1,162.76
+7,6,Visa Inc.,equity,44,262.23
+8,6,The Coca-Cola Company,equity,44,56.74
+9,6,Invesco QQQ Trust,etf,45,440.37
+10,6,REIT - Simon Property Group,real_estate,69,134.37
+11,7,Alphabet Inc. Class A,equity,81,173.30
+12,7,Cash Savings,cash,23587,1.00
+13,7,Procter & Gamble Co.,equity,30,167.06
+14,7,Bitcoin (BTC),crypto,1,44444.80
+15,7,Invesco QQQ Trust,etf,21,417.02
+16,7,Berkshire Hathaway Class B,equity,90,462.40
+17,7,iShares Core US Aggregate Bond ETF,bond,6,104.08
+18,7,Visa Inc.,equity,49,261.60
+19,8,Vanguard Wellington Fund,mutual_fund,88,81.49
+20,8,Fidelity 500 Index Fund,mutual_fund,30,191.09
+21,8,REIT - Simon Property Group,real_estate,35,132.32
+22,8,Money Market Fund,cash,7467,1.00
+23,8,Corporate Bond - Verizon 2030,bond,15,91.71
+24,8,Procter & Gamble Co.,equity,72,158.86
+25,8,American Funds Growth Fund of America,mutual_fund,75,67.99
+26,8,Amazon.com Inc.,equity,66,184.42
+27,8,T. Rowe Price Growth Stock Fund,mutual_fund,20,85.69
+28,8,REIT - Public Storage,real_estate,77,254.45
+29,9,Corporate Bond - Verizon 2030,bond,17,93.02
+30,9,US Treasury Bond 10Y,bond,4,101.82
+31,9,iShares Core US Aggregate Bond ETF,bond,11,96.90
+32,9,Vanguard FTSE Developed Markets ETF,etf,1,54.54
+33,9,Money Market Fund,cash,16903,1.00
+34,9,Fidelity 500 Index Fund,mutual_fund,81,164.92
+35,9,Series I Savings Bond,bond,7,100.00
+36,9,Amazon.com Inc.,equity,70,225.81
+37,10,Money Market Fund,cash,16510,1.00
+38,10,Berkshire Hathaway Class B,equity,40,378.73
+39,10,The Coca-Cola Company,equity,11,56.46
+40,10,Vanguard Total Stock Mkt ETF (VTI),etf,98,236.64
+41,10,Tesla Inc.,equity,71,171.47
+42,10,iShares Core US Aggregate Bond ETF,bond,14,111.39
+43,10,Crude Oil ETF (USO),commodity,89,65.03
+44,10,Vanguard FTSE Developed Markets ETF,etf,57,54.00
+45,10,Invesco QQQ Trust,etf,29,386.40
+46,11,US Treasury Note 5Y,bond,19,97.76
+47,11,The Coca-Cola Company,equity,8,58.89
+48,11,Money Market Fund,cash,2821,1.00
+49,11,Invesco QQQ Trust,etf,86,428.54
+50,11,Series I Savings Bond,bond,19,100.00
+51,12,JPMorgan Chase & Co.,equity,53,165.23
+52,12,Johnson & Johnson,equity,46,152.71
+53,12,Vanguard Dividend Appreciation ETF,etf,7,190.20
+54,12,Bitcoin (BTC),crypto,1,45299.61
+55,12,Vanguard Total Stock Mkt ETF (VTI),etf,32,219.58
+56,12,US Treasury Note 5Y,bond,14,97.47
+57,12,SPDR S&P 500 ETF (SPY),etf,57,546.96
+58,12,REIT - Prologis Inc.,real_estate,7,122.83
+59,13,REIT - Prologis Inc.,real_estate,97,129.70
+60,13,JPMorgan Chase & Co.,equity,62,167.10
+61,13,Vanguard Total Stock Mkt ETF (VTI),etf,22,228.95
+62,13,Ethereum (ETH),crypto,4,2370.50
+63,13,American Funds Growth Fund of America,mutual_fund,20,63.80
+64,13,Apple Inc.,equity,75,208.86
+65,13,Johnson & Johnson,equity,8,141.50
+66,13,Vanguard Dividend Appreciation ETF,etf,21,171.71
+67,13,Invesco QQQ Trust,etf,9,439.50
+68,14,Money Market Fund,cash,4428,1.00
+69,14,Crude Oil ETF (USO),commodity,32,74.47
+70,14,Microsoft Corp.,equity,54,428.88
+71,14,Municipal Bond Fund - NY,bond,9,97.04
+72,14,Vanguard Wellington Fund,mutual_fund,34,82.92
+73,14,Corporate Bond - Verizon 2030,bond,15,93.79
+74,14,Fidelity 500 Index Fund,mutual_fund,2,172.91
+75,14,Bitcoin (BTC),crypto,1,50430.11
+76,14,SPDR S&P 500 ETF (SPY),etf,45,555.70
+77,14,Cash Savings,cash,9838,1.00
+78,15,iShares Russell 2000 ETF,etf,91,202.10
+79,15,Solana (SOL),crypto,5,21.25
+80,15,Vanguard Real Estate ETF (VNQ),real_estate,85,77.07
+81,15,Money Market Fund,cash,4282,1.00
+82,15,Cash Savings,cash,9424,1.00
+83,15,NVIDIA Corp.,equity,92,107.14
+84,16,Municipal Bond Fund - NY,bond,17,99.89
+85,16,Cash Savings,cash,3524,1.00
+86,16,Corporate Bond - Verizon 2030,bond,2,90.04
+87,16,T. Rowe Price Growth Stock Fund,mutual_fund,21,88.53
+88,16,Series I Savings Bond,bond,18,100.00
+89,16,Microsoft Corp.,equity,89,458.47
+90,16,US Treasury Note 5Y,bond,19,100.42
+91,16,Vanguard Total Stock Mkt ETF (VTI),etf,40,228.23
+92,16,Gold ETF (SPDR Gold Shares),commodity,46,178.40
+93,16,Amazon.com Inc.,equity,46,210.21
+94,17,Solana (SOL),crypto,2,168.12
+95,17,Amazon.com Inc.,equity,23,219.33
+96,17,Johnson & Johnson,equity,53,164.07
+97,17,Cash Savings,cash,9242,1.00
+98,17,Microsoft Corp.,equity,49,454.66
+99,17,REIT - Public Storage,real_estate,26,307.16
+100,17,Invesco QQQ Trust,etf,30,402.29
+101,17,Corporate Bond - Verizon 2030,bond,11,93.34
+102,18,Ethereum (ETH),crypto,3,3082.96
+103,18,iShares Russell 2000 ETF,etf,43,227.57
+104,18,Alphabet Inc. Class A,equity,23,170.64
+105,18,Bitcoin (BTC),crypto,1,52669.71
+106,18,Invesco QQQ Trust,etf,56,440.62
+107,19,Visa Inc.,equity,25,260.38
+108,19,Fidelity 500 Index Fund,mutual_fund,67,196.28
+109,19,Series I Savings Bond,bond,7,100.00
+110,19,Vanguard Total Stock Mkt ETF (VTI),etf,86,256.04
+111,19,US Treasury Bond 10Y,bond,10,100.07
+112,19,Corporate Bond - Verizon 2030,bond,13,98.37
+113,19,US Treasury Note 5Y,bond,14,101.32
+114,19,Invesco QQQ Trust,etf,79,436.91
+115,19,SPDR S&P 500 ETF (SPY),etf,39,484.43
+116,20,Vanguard Real Estate ETF (VNQ),real_estate,60,83.84
+117,20,iShares Core US Aggregate Bond ETF,bond,16,108.49
+118,20,Crude Oil ETF (USO),commodity,22,76.47
+119,20,The Coca-Cola Company,equity,82,65.53
+120,20,NVIDIA Corp.,equity,87,105.52
+121,20,REIT - Prologis Inc.,real_estate,4,101.62
+122,20,Solana (SOL),crypto,1,92.87
+123,20,Cash Savings,cash,24038,1.00
+124,21,Vanguard FTSE Developed Markets ETF,etf,32,46.48
+125,21,Fidelity 500 Index Fund,mutual_fund,100,171.26
+126,21,Procter & Gamble Co.,equity,67,156.26
+127,21,US Treasury Bond 10Y,bond,15,96.33
+128,21,Vanguard Dividend Appreciation ETF,etf,72,187.86
+129,21,Silver Trust (iShares),commodity,79,24.52
+130,21,Money Market Fund,cash,18452,1.00
+131,21,SPDR S&P 500 ETF (SPY),etf,96,553.38
+132,21,Vanguard Total Stock Mkt ETF (VTI),etf,82,223.87
+133,21,T. Rowe Price Growth Stock Fund,mutual_fund,81,75.98
+134,22,Alphabet Inc. Class A,equity,31,149.02
+135,22,iShares Russell 2000 ETF,etf,11,195.53
+136,22,Amazon.com Inc.,equity,91,159.26
+137,22,Invesco QQQ Trust,etf,70,426.59
+138,22,Tesla Inc.,equity,50,267.63
+139,22,Series I Savings Bond,bond,1,100.00
+140,22,REIT - Simon Property Group,real_estate,62,130.21
+141,22,Vanguard Dividend Appreciation ETF,etf,54,186.15
+142,23,iShares Core US Aggregate Bond ETF,bond,8,103.30
+143,23,JPMorgan Chase & Co.,equity,4,181.11
+144,23,Corporate Bond - Verizon 2030,bond,6,100.09
+145,23,Cash Savings,cash,13411,1.00
+146,23,US Treasury Bond 10Y,bond,3,101.43
+147,23,Tesla Inc.,equity,24,156.54
+148,23,SPDR S&P 500 ETF (SPY),etf,59,489.22
+149,23,American Funds Growth Fund of America,mutual_fund,36,75.04
+150,23,Vanguard Real Estate ETF (VNQ),real_estate,11,84.41
+151,23,Fidelity 500 Index Fund,mutual_fund,45,161.21
+152,24,REIT - Prologis Inc.,real_estate,97,101.09
+153,24,Apple Inc.,equity,80,162.19
+154,24,Procter & Gamble Co.,equity,15,159.74
+155,24,Berkshire Hathaway Class B,equity,99,394.27
+156,24,Series I Savings Bond,bond,4,100.00
+157,25,Bitcoin (BTC),crypto,5,30975.78
+158,25,Vanguard Dividend Appreciation ETF,etf,49,181.90
+159,25,Fidelity 500 Index Fund,mutual_fund,76,184.53
+160,25,US Treasury Bond 10Y,bond,10,103.50
+161,25,US Treasury Note 5Y,bond,19,102.26
+162,25,Vanguard FTSE Developed Markets ETF,etf,85,48.71
