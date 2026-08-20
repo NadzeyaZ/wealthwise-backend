@@ -46,5 +46,6 @@ router.get("/me", async (req, res) => {
     firstName: user.first_name,
     lastName: user.last_name,
     role: user.role,
+    dob: user.dob,
   });
 });
