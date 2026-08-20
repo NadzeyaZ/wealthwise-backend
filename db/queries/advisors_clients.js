@@ -17,9 +17,20 @@ export async function createAdvisorsClients(advisorId, clientId) {
 
 export async function getClientsByAdvisorId(advisorId) {
   const sql = `
-  SELECT *
-  FROM advisors_clients
-  WHERE advisor_id = $1
+  SELECT
+    u.id,
+    u.email,
+    u.first_name AS "firstName",
+    u.last_name AS "lastName",
+    u.role,
+    u.dob,
+    COALESCE(SUM(i.quantity * i.unit_price), 0) AS "portfolioValue"
+  FROM advisors_clients ac
+  JOIN users u ON u.id = ac.client_id
+  LEFT JOIN investments i ON i.client_id = u.id
+  WHERE ac.advisor_id = $1
+  GROUP BY u.id, u.email, u.first_name, u.last_name, u.role, u.dob
+  ORDER BY u.last_name, u.first_name
   `;
   const { rows: clients } = await db.query(sql, [advisorId]);
   return clients;
