@@ -3,7 +3,10 @@ const router = express.Router();
 export default router;
 
 import { getClientsByAdvisorId } from "#db/queries/advisors_clients";
-import { getInvestmentsByClientId } from "#db/queries/investments";
+import {
+  getInvestmentsByClientId,
+  updateInvestment,
+} from "#db/queries/investments";
 import requireUser from "#middleware/requireUser";
 
 router.route("/").get(requireUser, async (req, res) => {
@@ -20,3 +23,20 @@ router.route("/:clientId/investments").get(requireUser, async (req, res) => {
   const investments = await getInvestmentsByClientId(req.params.clientId);
   res.send(investments);
 });
+
+router
+  .route("/:clientId/investments/:investmentId")
+  .put(requireUser, async (req, res) => {
+    const { quantity } = req.body;
+    const investment = await updateInvestment(
+      req.params.clientId,
+      req.params.investmentId,
+      quantity,
+    );
+
+    if (!investment) {
+      return res.status(404).send("Investment not found for this client.");
+    }
+
+    res.send(investment);
+  });

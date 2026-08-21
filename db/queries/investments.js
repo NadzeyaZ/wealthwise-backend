@@ -25,7 +25,21 @@ export async function getInvestmentsByClientId(client_id) {
   SELECT *
   FROM investments
   WHERE client_id = $1
+  ORDER BY id
   `;
   const { rows: investments } = await db.query(sql, [client_id]);
   return investments;
+}
+
+export async function updateInvestment(client_id, investment_id, quantity) {
+  const sql = `
+  UPDATE investments
+  SET quantity = $1
+  WHERE client_id = $2 AND id = $3
+  RETURNING *
+  `;
+  const {
+    rows: [investment],
+  } = await db.query(sql, [quantity, client_id, investment_id]);
+  return investment;
 }
