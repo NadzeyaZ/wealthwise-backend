@@ -5,6 +5,7 @@ export default router;
 import { getClientsByAdvisorId } from "#db/queries/advisors_clients";
 import {
   getInvestmentsByClientId,
+  createInvestment,
   updateInvestment,
 } from "#db/queries/investments";
 import requireUser from "#middleware/requireUser";
@@ -22,6 +23,18 @@ router.route("/").get(requireUser, async (req, res) => {
 router.route("/:clientId/investments").get(requireUser, async (req, res) => {
   const investments = await getInvestmentsByClientId(req.params.clientId);
   res.send(investments);
+});
+
+router.route("/:clientId/investments").post(requireUser, async (req, res) => {
+  const { name, asset_class, quantity, unit_price } = req.body;
+  const investment = await createInvestment(
+    req.params.clientId,
+    name,
+    asset_class,
+    quantity,
+    unit_price,
+  );
+  res.send(investment);
 });
 
 router
