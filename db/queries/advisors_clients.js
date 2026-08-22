@@ -45,3 +45,13 @@ export async function getAdvisorsByClientId(clientId) {
   const { rows: advisors } = await db.query(sql, [clientId]);
   return advisors;
 }
+
+export async function isAdvisorOfClient(advisorId, clientId) {
+  const sql = `
+  SELECT 1
+  FROM advisors_clients
+  WHERE advisor_id = $1 AND client_id = $2
+  `;
+  const { rows } = await db.query(sql, [advisorId, clientId]);
+  return rows.length > 0;
+}

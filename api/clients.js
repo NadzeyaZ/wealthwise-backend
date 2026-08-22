@@ -2,7 +2,11 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import { getClientsByAdvisorId } from "#db/queries/advisors_clients";
+import {
+  getClientsByAdvisorId,
+  isAdvisorOfClient,
+} from "#db/queries/advisors_clients";
+import { getGoalsByClientId } from "#db/queries/goals";
 import {
   getInvestmentsByClientId,
   createInvestment,
@@ -21,6 +25,9 @@ router.route("/").get(requireUser, async (req, res) => {
 });
 
 router.route("/:clientId/investments").get(requireUser, async (req, res) => {
+  if (!(await isAdvisorOfClient(req.user.id, req.params.clientId))) {
+    return res.status(403).send("Access denied. Not your client.");
+  }
   const investments = await getInvestmentsByClientId(req.params.clientId);
   res.send(investments);
 });
@@ -50,6 +57,14 @@ router
     if (!investment) {
       return res.status(404).send("Investment not found for this client.");
     }
-
     res.send(investment);
   });
+
+router.route("/:clientId/goals").get(requireUser, async (req, res) => {
+  if (req.user.role !== "advisor") return res.status(403).send("Forbidden");
+  if (!(await isAdvisorOfClient(req.user.id, req.params.clientId))) {
+    return res.status(403).send("Access denied. Not your client.");
+  }
+  const goals = await getGoalsByClientId(req.params.clientId);
+  res.json(goals);
+});
