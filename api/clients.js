@@ -5,6 +5,7 @@ export default router;
 import {
   getClientsByAdvisorId,
   isAdvisorOfClient,
+  getAdvisorsByClientId,
 } from "#db/queries/advisors_clients";
 import { getGoalsByClientId } from "#db/queries/goals";
 import {
@@ -22,6 +23,15 @@ router.route("/").get(requireUser, async (req, res) => {
   }
   const clients = await getClientsByAdvisorId(req.user.id);
   res.send(clients);
+});
+
+router.route("/:clientId/advisor").get(requireUser, async (req, res) => {
+  const isSelf = String(req.user.id) === req.params.clientId;
+  if (!isSelf && !(await isAdvisorOfClient(req.user.id, req.params.clientId))) {
+    return res.status(403).send("Access denied. Not your client.");
+  }
+  const advisors = await getAdvisorsByClientId(req.params.clientId);
+  res.send(advisors);
 });
 
 router.route("/:clientId/investments").get(requireUser, async (req, res) => {

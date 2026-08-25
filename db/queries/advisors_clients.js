@@ -38,9 +38,16 @@ export async function getClientsByAdvisorId(advisorId) {
 
 export async function getAdvisorsByClientId(clientId) {
   const sql = `
-  SELECT *
-  FROM advisors_clients
-  WHERE client_id = $1
+  SELECT
+    u.id,
+    u.email,
+    u.first_name AS "firstName",
+    u.last_name AS "lastName",
+    u.role
+  FROM advisors_clients ac
+  JOIN users u ON u.id = ac.advisor_id
+  WHERE ac.client_id = $1
+  ORDER BY u.last_name, u.first_name
   `;
   const { rows: advisors } = await db.query(sql, [clientId]);
   return advisors;
