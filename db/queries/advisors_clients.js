@@ -38,10 +38,27 @@ export async function getClientsByAdvisorId(advisorId) {
 
 export async function getAdvisorsByClientId(clientId) {
   const sql = `
-  SELECT *
-  FROM advisors_clients
-  WHERE client_id = $1
+  SELECT
+    u.id,
+    u.email,
+    u.first_name AS "firstName",
+    u.last_name AS "lastName",
+    u.role
+  FROM advisors_clients ac
+  JOIN users u ON u.id = ac.advisor_id
+  WHERE ac.client_id = $1
+  ORDER BY u.last_name, u.first_name
   `;
   const { rows: advisors } = await db.query(sql, [clientId]);
   return advisors;
+}
+
+export async function isAdvisorOfClient(advisorId, clientId) {
+  const sql = `
+  SELECT 1
+  FROM advisors_clients
+  WHERE advisor_id = $1 AND client_id = $2
+  `;
+  const { rows } = await db.query(sql, [advisorId, clientId]);
+  return rows.length > 0;
 }
