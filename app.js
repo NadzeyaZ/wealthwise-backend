@@ -23,7 +23,7 @@ app.get("/", (req, res) => res.send("Hello, World!"));
 
 app.use("/users", usersRouter);
 app.use("/clients", clientsRouter);
-app.use("/goal", goalRouter);
+app.use("/goals", goalRouter);
 
 app.use(handlePostgresErrors);
 app.use((err, req, res, next) => {

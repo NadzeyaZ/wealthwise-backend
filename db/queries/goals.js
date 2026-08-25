@@ -20,3 +20,9 @@ export async function createGoal(client_id, name, target_amount, target_date) {
   ]);
   return rows[0];
 }
+
+export async function deleteGoal(goal_id) {
+  const sql = `DELETE FROM goals WHERE id = $1 RETURNING *`;
+  const { rows } = await db.query(sql, [goal_id]);
+  return rows[0];
+}
