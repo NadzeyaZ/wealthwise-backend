@@ -25,7 +25,8 @@ router.route("/").get(requireUser, async (req, res) => {
 });
 
 router.route("/:clientId/investments").get(requireUser, async (req, res) => {
-  if (!(await isAdvisorOfClient(req.user.id, req.params.clientId))) {
+  const isSelf = String(req.user.id) === req.params.clientId;
+  if (!isSelf && !(await isAdvisorOfClient(req.user.id, req.params.clientId))) {
     return res.status(403).send("Access denied. Not your client.");
   }
   const investments = await getInvestmentsByClientId(req.params.clientId);
@@ -61,8 +62,8 @@ router
   });
 
 router.route("/:clientId/goals").get(requireUser, async (req, res) => {
-  if (req.user.role !== "advisor") return res.status(403).send("Forbidden");
-  if (!(await isAdvisorOfClient(req.user.id, req.params.clientId))) {
+  const isSelf = String(req.user.id) === req.params.clientId;
+  if (!isSelf && !(await isAdvisorOfClient(req.user.id, req.params.clientId))) {
     return res.status(403).send("Access denied. Not your client.");
   }
   const goals = await getGoalsByClientId(req.params.clientId);
