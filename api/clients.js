@@ -13,6 +13,7 @@ import {
   createInvestment,
   updateInvestment,
 } from "#db/queries/investments";
+import { createRecommendation } from "#db/queries/recommendations";
 import requireUser from "#middleware/requireUser";
 
 router.route("/").get(requireUser, async (req, res) => {
@@ -79,3 +80,18 @@ router.route("/:clientId/goals").get(requireUser, async (req, res) => {
   const goals = await getGoalsByClientId(req.params.clientId);
   res.json(goals);
 });
+
+router
+  .route("/:clientId/recommendations")
+  .post(requireUser, async (req, res) => {
+    const { goal_id, content, status, client_note } = req.body;
+    const recommendation = await createRecommendation(
+      req.params.clientId,
+      req.user.id,
+      goal_id,
+      content,
+      status,
+      client_note,
+    );
+    res.send(recommendation);
+  });
