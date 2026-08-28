@@ -30,6 +30,16 @@ export async function getRecommendationsByClientId(clientId) {
   return result.rows;
 }
 
+export async function getRecommendationById(recommendationId) {
+  const sql = `
+    SELECT *
+    FROM recommendations
+    WHERE id = $1;
+  `;
+  const result = await db.query(sql, [recommendationId]);
+  return result.rows[0];
+}
+
 export async function updateRecommendationStatus(recommendationId, status) {
   const sql = `
     UPDATE recommendations
@@ -52,5 +62,15 @@ export async function updateRecommendationClientNote(
     RETURNING *;
   `;
   const result = await db.query(sql, [clientNote, recommendationId]);
+  return result.rows[0];
+}
+
+export async function deleteRecommendation(recommendationId) {
+  const sql = `
+    DELETE FROM recommendations
+    WHERE id = $1
+    RETURNING *;
+  `;
+  const result = await db.query(sql, [recommendationId]);
   return result.rows[0];
 }
