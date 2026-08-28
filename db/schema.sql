@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS recommendations;
 DROP TABLE IF EXISTS goals;
 DROP TABLE IF EXISTS investments;
 DROP TABLE IF EXISTS advisors_clients;
@@ -36,5 +37,13 @@ CREATE TABLE investments (
     quantity    integer     NOT NULL CHECK (quantity >= 0),
     unit_price  numeric(12, 2) NOT NULL CHECK (unit_price >= 0)
 );
-
+CREATE TABLE recommendations (
+    id          serial      PRIMARY KEY,
+    client_id   integer     NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    advisor_id  integer     NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    goal_id     integer     REFERENCES goals(id) ON DELETE CASCADE,
+    content     text        NOT NULL,
+    status      text        NOT NULL CHECK (status IN ('pending', 'accepted', 'rejected')),
+    client_note  text
+);
 
