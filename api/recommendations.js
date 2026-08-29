@@ -8,6 +8,8 @@ import {
   getAdvisorsByClientId,
 } from "#db/queries/advisors_clients";
 import { getGoalsByClientId } from "#db/queries/goals";
+import { getInvestmentsByClientId } from "#db/queries/investments";
+import { getUserById } from "#db/queries/users";
 import {
   createRecommendation,
   getRecommendationById,
@@ -17,6 +19,14 @@ import {
   deleteRecommendation,
 } from "#db/queries/recommendations";
 import requireUser from "#middleware/requireUser";
+import { generateRecommendationDraft } from "#services/aiRecommendation";
+
+/** Computes age in years from a date of birth */
+function getAge(dob) {
+  if (!dob) return null;
+  const diffMs = Date.now() - new Date(dob).getTime();
+  return Math.floor(diffMs / (1000 * 60 * 60 * 24 * 365.25));
+}
 
 router.route("/").get(requireUser, async (req, res) => {
   const clientId = req.query.clientId ?? String(req.user.id);
@@ -45,6 +55,34 @@ router.route("/").post(requireUser, async (req, res) => {
     clientNote,
   );
   res.status(201).send(newRecommendation);
+});
+
+router.route("/generate").post(requireUser, async (req, res) => {
+  const { clientId, goalId } = req.body;
+
+  if (!(await isAdvisorOfClient(req.user.id, clientId))) {
+    return res.status(403).send("Access denied. Not your client.");
+  }
+
+  const investments = await getInvestmentsByClientId(clientId);
+  const allGoals = await getGoalsByClientId(clientId);
+  const goals = goalId
+    ? allGoals.filter((goal) => String(goal.id) === String(goalId))
+    : allGoals;
+  const client = await getUserById(clientId);
+  const age = getAge(client?.dob);
+
+  try {
+    const draft = await generateRecommendationDraft({
+      investments,
+      goals,
+      age,
+    });
+    res.status(200).send({ draft });
+  } catch (e) {
+    console.error(e);
+    res.status(502).send("Failed to generate AI recommendation.");
+  }
 });
 
 router.route("/:recommendationId/status").put(requireUser, async (req, res) => {
